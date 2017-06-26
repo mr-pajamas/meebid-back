@@ -7,3 +7,4 @@ POJOUtil.java
 POJOUtil
 setting.properties
 classes
+src/main/resources/*

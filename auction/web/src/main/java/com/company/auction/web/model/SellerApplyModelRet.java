@@ -19,7 +19,6 @@ public class SellerApplyModelRet extends SellerApplyModel {
 
     public SellerApplyModelRet(Seller seller) {
         this.id = seller.getId();
-        this.email = seller.getEmail();
         this.company = seller.getCompany();
         this.country = seller.getCountry();
         this.province = seller.getProvince();

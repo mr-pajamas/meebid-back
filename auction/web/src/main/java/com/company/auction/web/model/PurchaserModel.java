@@ -12,6 +12,8 @@ import com.company.auction.core.Entity.Purchaser;
  */
 public class PurchaserModel {
 
+    private String uid;
+
     private String username;
 
     private String nickname;
@@ -24,6 +26,7 @@ public class PurchaserModel {
     private List<Address> addressList;
 
     public PurchaserModel(Purchaser purchaser){
+        this.uid =purchaser.getId();
         this.username = purchaser.getUsername();
         this.idcard=purchaser.getIdcard();
         this.mobile=purchaser.getMobile();
@@ -68,5 +71,13 @@ public class PurchaserModel {
 
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

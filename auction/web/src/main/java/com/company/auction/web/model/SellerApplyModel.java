@@ -70,7 +70,7 @@ public class SellerApplyModel {
     /**
      * 邮箱
      */
-    protected String email;
+    protected String uid;
 
 
     /**
@@ -158,12 +158,12 @@ public class SellerApplyModel {
         this.mobile = mobile;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUid() {
+        return uid;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getWebsite() {
@@ -176,7 +176,7 @@ public class SellerApplyModel {
 
     public Seller toSeller(){
         Seller seller = new Seller();
-        seller.setEmail(email);
+        seller.setUid(uid);
         seller.setCompany(company);
         seller.setFirstname(firstName);
         seller.setLastname(lastName);

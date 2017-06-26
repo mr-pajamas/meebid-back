@@ -16,14 +16,9 @@ public class SellerDao extends BaseDao {
     public List<Seller> findSeller(Seller seller) {
         StringBuffer sql = new StringBuffer();
         sql.append("from Seller t where 1=1 ");
-        if (!StringUtils.isEmpty(seller.getUsername())) {
-            sql.append(" and t.username =:username");
-        }
-        if (!StringUtils.isEmpty(seller.getPassword())) {
-            sql.append(" and t.password =:password");
-        }
-        if (!StringUtils.isEmpty(seller.getEmail())) {
-            sql.append(" and t.email =:email");
+
+        if (!StringUtils.isEmpty(seller.getUid())) {
+            sql.append(" and t.uid =:uid");
         }
         return findObjects(sql.toString(), seller);
     }

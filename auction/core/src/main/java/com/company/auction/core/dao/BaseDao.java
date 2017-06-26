@@ -64,6 +64,34 @@ public abstract class BaseDao {
     }
 
     /**
+     * 根据sql返回单个查询结果
+     *
+     * @param sql
+     *
+     * @return
+     */
+    public int countResult(String sql, Object entry) {
+        Query query = sessionFactory.getCurrentSession().createQuery(sql);
+        query.setProperties(entry);
+        return Integer.parseInt(query.uniqueResult().toString());
+
+    }
+
+    /**
+     * 根据sql返回单个查询结果
+     *
+     * @param sql
+     *
+     * @return
+     */
+    public int countResult(String sql, Map entry) {
+        Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+        query.setProperties(entry);
+        return Integer.parseInt(query.uniqueResult().toString());
+
+    }
+
+    /**
      * 根据sql和param返回单个查询结果
      *
      * @param sql
@@ -76,6 +104,7 @@ public abstract class BaseDao {
         query.setProperties(param);
         return query.uniqueResult();
     }
+
 
     /**
      * 查询对象集合
@@ -109,7 +138,6 @@ public abstract class BaseDao {
         return query.list();
     }
 
-
     /**
      * 删除方法（参数必须是ids）
      *
@@ -119,6 +147,19 @@ public abstract class BaseDao {
     public void removeByIds(String sql, List<Integer> ids) {
         Query query = sessionFactory.getCurrentSession().createQuery(sql);
         query.setParameterList("ids", ids);
+        query.executeUpdate();
+    }
+
+    /**
+     * update更新对象
+     *
+     * @param sql
+     * @param object
+     */
+
+    public void updateObject(String sql, Object object) {
+        Query query = sessionFactory.getCurrentSession().createQuery(sql);
+        query.setProperties(object);
         query.executeUpdate();
     }
 
@@ -144,7 +185,7 @@ public abstract class BaseDao {
      * @return
      */
     public Object getObjectById(Integer id, Object entity) {
-        return sessionFactory.getCurrentSession().get((Class) entity, id);
+        return sessionFactory.getCurrentSession().get(entity.getClass(), id);
     }
 
     /**
@@ -153,7 +194,7 @@ public abstract class BaseDao {
      * @return
      */
     public Object getObjectById(String id, Object entity) {
-        return sessionFactory.getCurrentSession().get((Class) entity, id);
+        return sessionFactory.getCurrentSession().get(entity.getClass(), id);
     }
 
 
@@ -223,8 +264,10 @@ public abstract class BaseDao {
         Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
         query.setProperties(param);
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+
         if (param.get("page") != null && param.get("pageSize") != null) {
             int page = Integer.parseInt(param.get("page").toString());
+
             int pageSize = Integer.parseInt(param.get("pageSize").toString());
             query.setFirstResult(page == 1 ? 0 : (page - 1) * pageSize);
             query.setMaxResults(pageSize);

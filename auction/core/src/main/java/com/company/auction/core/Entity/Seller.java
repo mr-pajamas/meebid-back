@@ -53,19 +53,16 @@ public class Seller {
     private String address;
     @Column(name = "mobile")
     private String mobile;
-    @Column(name = "email")
-    private String email;
+    @Column(name = "uid")
+    private String uid;
     @Column(name = "website")
     private String website;
-    @Column(name = "username")
-    private String username;
-    @Column(name = "password")
-    private String password;
-    @Column(name = "business-license")
+
+    @Column(name = "businessLicense")
     private String businessLicense;
-    @Column(name = "idcard-front")
+    @Column(name = "idcardFront")
     private String idcardFront;
-    @Column(name = "idcard-reverse")
+    @Column(name = "idcardReverse")
     private String idcardReverse;
     @Column(name = "logo")
     private String logo;
@@ -172,13 +169,7 @@ public class Seller {
         return this.mobile;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public String getEmail() {
-        return this.email;
-    }
 
     public void setWebsite(String website) {
         this.website = website;
@@ -188,20 +179,12 @@ public class Seller {
         return this.website;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getUid() {
+        return uid;
     }
 
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return this.password;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public void setBusinessLicense(String businessLicense) {

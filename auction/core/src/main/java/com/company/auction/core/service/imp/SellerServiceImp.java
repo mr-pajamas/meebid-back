@@ -2,8 +2,7 @@ package com.company.auction.core.service.imp;
 
 import java.util.*;
 
-import com.company.auction.core.Entity.Seller;
-import com.company.auction.core.Entity.SellerImg;
+import com.company.auction.core.Entity.*;
 import com.company.auction.core.dao.SellerDao;
 import com.company.auction.core.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +41,9 @@ public class SellerServiceImp implements SellerService {
     }
 
     @Override
-    public Seller findSellerByEmail(String email) {
+    public Seller findSellerByUid(String uid) {
         Seller seller = new Seller();
-        seller.setEmail(email);
+        seller.setUid(uid);
         List<Seller> sellers = sellerDao.findSeller(seller);
         if (sellers.size() > 0)
             return sellers.get(0);
@@ -75,6 +74,27 @@ public class SellerServiceImp implements SellerService {
             imgList.add(sellerImg);
         }
         sellerDao.saveBatch(imgList);
+    }
+
+    @Override
+    public Activation saveActivation(String email) {
+        Activation activation = new Activation();
+        activation.setSecretKey(UUID.randomUUID().toString());
+        activation.setEmail(email);
+        activation.setCreatetime(new Date());
+        activation.setState(1);
+        sellerDao.save(activation);
+        return activation;
+    }
+
+    @Override
+    public Activation findActivation(String key, String email) {
+        return null;
+    }
+
+    @Override
+    public Activation findActivation(String email) {
+        return null;
     }
 
 

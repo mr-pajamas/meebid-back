@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+  <!-- elasticsearch配置 -->
+      <bean class="com.company.auction.core.elasticsearch.client.ESTransportClient">
+          <property name="clusterNodes" value="118.178.124.123:9300" />
+          <property name="clusterName" value="elasticsearch" />
+      </bean>
+</beans>
+
+
+

@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class SellerLicenseModel {
 
+    private String uid;
+
     private String description;
 
     private List<String> desImg;
@@ -65,5 +67,13 @@ public class SellerLicenseModel {
 
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
